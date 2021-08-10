@@ -1,10 +1,8 @@
-= Improved-guacamole-locta
-
-image:https://img.shields.io/badge/vert.x-4.2.0-SNAPSHOT-purple.svg[link="https://vertx.io"]
+## improved-guacamole-locta
 
 This application was generated using http://start.vertx.io
 
-== Building
+### Building
 
 To launch your tests:
 ```
@@ -21,7 +19,7 @@ To run your application:
 ./gradlew clean run
 ```
 
-== Help
+### Help
 
 * https://vertx.io/docs/[Vert.x Documentation]
 * https://stackoverflow.com/questions/tagged/vert.x?sort=newest&pageSize=15[Vert.x Stack Overflow]
