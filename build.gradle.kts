@@ -23,7 +23,7 @@ repositories {
 val vertxVersion = "4.2.0-SNAPSHOT"
 val junitJupiterVersion = "5.7.0"
 
-val mainVerticleName = "com.icanci01.guacamole.starter.MainVerticle"
+val mainVerticleName = "com.icanci01.guacamole.starter.Launcher"
 val launcherClassName = "io.vertx.core.Launcher"
 
 val watchForChange = "src/**/*"
