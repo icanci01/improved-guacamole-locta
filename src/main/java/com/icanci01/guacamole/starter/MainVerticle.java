@@ -1,11 +1,7 @@
 package com.icanci01.guacamole.starter;
 
-
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
-import io.vertx.core.Vertx;
-import io.vertx.core.impl.logging.Logger;
-import io.vertx.core.impl.logging.LoggerFactory;
 
 public class MainVerticle extends AbstractVerticle {
 
