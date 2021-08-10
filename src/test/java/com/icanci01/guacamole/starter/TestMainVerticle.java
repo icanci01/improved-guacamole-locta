@@ -1,6 +1,6 @@
-package com.icanci01.guacamole.init;
+package com.icanci01.guacamole.starter;
 
-import com.icanci01.guacamole.init.Launcher;
+import com.icanci01.guacamole.starter.MainVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.junit5.VertxExtension;
 import io.vertx.junit5.VertxTestContext;
@@ -9,11 +9,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 @ExtendWith(VertxExtension.class)
-public class TestLauncher {
+public class TestMainVerticle {
 
   @BeforeEach
   void deploy_verticle(Vertx vertx, VertxTestContext testContext) {
-    vertx.deployVerticle(new Launcher(), testContext.succeeding(id -> testContext.completeNow()));
+    vertx.deployVerticle(new MainVerticle(), testContext.succeeding(id -> testContext.completeNow()));
   }
 
   @Test

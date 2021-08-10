@@ -1,4 +1,5 @@
-package com.icanci01.guacamole.init;
+package com.icanci01.guacamole.starter;
+
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
@@ -6,25 +7,18 @@ import io.vertx.core.Vertx;
 import io.vertx.core.impl.logging.Logger;
 import io.vertx.core.impl.logging.LoggerFactory;
 
-public class Launcher extends AbstractVerticle {
-
-  private static final Logger LOG = LoggerFactory.getLogger(Launcher.class);
-
-  public static void main(String[] args) {
-    var vertx = Vertx.vertx();
-    vertx.deployVerticle(new Launcher());
-  }
+public class MainVerticle extends AbstractVerticle {
 
   @Override
-  public void start(Promise<Void> startPromise) {
+  public void start(final Promise<Void> startPromise) {
     vertx.createHttpServer().requestHandler(req -> {
       req.response()
         .putHeader("content-type", "text/plain")
-        .end("MAIN!");
+        .end("HERE!");
     }).listen(8888, http -> {
       if (http.succeeded()) {
         startPromise.complete();
-        LOG.info("HTTP server started on port 8888");
+        System.out.println("Started");
       } else {
         startPromise.fail(http.cause());
       }
