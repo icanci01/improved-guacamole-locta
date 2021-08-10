@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.icanci01.guacamole"
-version = "1.0.0-SNAPSHOT"
+version = "0.0.0-SNAPSHOT"
 
 repositories {
   maven {
@@ -23,7 +23,7 @@ repositories {
 val vertxVersion = "4.2.0-SNAPSHOT"
 val junitJupiterVersion = "5.7.0"
 
-val mainVerticleName = "com.icanci01.guacamole.improved_guacamole_locta.MainVerticle"
+val mainVerticleName = "com.icanci01.guacamole.starter.MainVerticle"
 val launcherClassName = "io.vertx.core.Launcher"
 
 val watchForChange = "src/**/*"
@@ -35,11 +35,7 @@ application {
 
 dependencies {
   implementation(platform("io.vertx:vertx-stack-depchain:$vertxVersion"))
-  implementation("io.vertx:vertx-web-client")
-  implementation("io.vertx:vertx-web-validation")
-  implementation("io.vertx:vertx-web")
-  implementation("io.vertx:vertx-auth-mongo")
-  implementation("io.vertx:vertx-http-service-factory")
+  implementation("io.vertx:vertx-core")
   testImplementation("io.vertx:vertx-junit5")
   testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
 }
