@@ -18,4 +18,5 @@ public class Launcher extends AbstractVerticle {
     vertx.deployVerticle(new VerticleB());
     startPromise.complete();
   }
+
 }
