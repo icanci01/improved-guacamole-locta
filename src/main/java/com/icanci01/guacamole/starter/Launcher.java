@@ -1,5 +1,6 @@
 package com.icanci01.guacamole.starter;
 
+import com.icanci01.guacamole.eventbus.RequestResponseExample;
 import com.icanci01.guacamole.eventloops.EventLoopExample;
 import com.icanci01.guacamole.verticles.VerticleA;
 import com.icanci01.guacamole.verticles.VerticleB;
@@ -40,11 +41,23 @@ public class Launcher extends AbstractVerticle {
     @Override
     public void start(final Promise<Void> startPromise) {
         LOG.debug("Launch {}", getClass().getName());
-        vertx.deployVerticle(new HttpVerticle());
-        vertx.deployVerticle(new EventLoopExample());
-        vertx.deployVerticle(new WorkerExample());
-        vertx.deployVerticle(new VerticleA());
-        vertx.deployVerticle(new VerticleB());
+
+        // vertx.deployVerticle(new HttpVerticle());
+
+        // vertx.deployVerticle(new EventLoopExample());
+
+        // vertx.deployVerticle(new WorkerExample());
+
+        //  vertx.deployVerticle(new VerticleA());
+
+        //  vertx.deployVerticle(new VerticleB());
+
+        //  scalingVerticlesConfig();
+
+        requestResponseExample();
+    }
+
+    private void scalingVerticlesConfig() {
         vertx.deployVerticle(VerticleN.class.getName(),
             new DeploymentOptions()
                 .setInstances(4)
@@ -52,7 +65,15 @@ public class Launcher extends AbstractVerticle {
                     .put("id", UUID.randomUUID().toString())
                     .put("name", VerticleN.class.getSimpleName()))
         );
+    }
 
+    private void requestResponseExample() {
+        vertx.deployVerticle(new RequestResponseExample(),
+            new DeploymentOptions()
+                .setWorker(true)
+                .setWorkerPoolSize(2)
+                .setWorkerPoolName("response-request-example")
+        );
     }
 
 }
