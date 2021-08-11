@@ -8,11 +8,11 @@ import org.slf4j.LoggerFactory;
 
 public class VerticleA extends AbstractVerticle {
 
-  private static final Logger LOG = LoggerFactory.getLogger(Launcher.class);
+  private static final Logger LOG = LoggerFactory.getLogger(VerticleA.class);
 
   @Override
-  public void start(Promise<Void> startPromise) throws Exception {
-    LOG.debug("Starting " + getClass().getName());
+  public void start(final Promise<Void> startPromise) throws Exception {
+    LOG.debug("Starting {}", getClass().getName());
     vertx.deployVerticle(new VerticleAA(), whenDeployed -> {
       LOG.debug("Deployed " + VerticleAA.class.getName());
       //TODO: Here add your code
@@ -20,7 +20,7 @@ public class VerticleA extends AbstractVerticle {
       vertx.undeploy(whenDeployed.result());
     });
     vertx.deployVerticle(new VerticleAB(), whenDeployed -> {
-      LOG.debug("Deployed " + VerticleAB.class.getName());
+      LOG.debug("Deployed {}", VerticleAB.class.getName());
       //TODO: Here add your code
 
       vertx.undeploy(whenDeployed.result());

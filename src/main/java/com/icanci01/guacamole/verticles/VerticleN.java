@@ -8,12 +8,12 @@ import org.slf4j.LoggerFactory;
 
 public class VerticleN extends AbstractVerticle {
 
-  private static final Logger LOG = LoggerFactory.getLogger(Launcher.class);
+  private static final Logger LOG = LoggerFactory.getLogger(VerticleN.class);
 
   @Override
-  public void start(Promise<Void> startPromise) throws Exception {
-    LOG.debug("Starting " + getClass().getName() + " on thread " + Thread.currentThread().getName());
-    LOG.debug(Thread.currentThread().getName() + " with config " + config().toString());
+  public void start(final Promise<Void> startPromise) throws Exception {
+    LOG.debug("Starting {} on thread {}", getClass().getName(), Thread.currentThread().getName());
+    LOG.debug("With config {}", config().toString());
     //TODO: Here add your code
 
     startPromise.complete();
