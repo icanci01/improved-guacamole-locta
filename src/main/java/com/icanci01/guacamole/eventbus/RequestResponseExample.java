@@ -1,11 +1,8 @@
 package com.icanci01.guacamole.eventbus;
 
-import com.icanci01.guacamole.verticles.VerticleAA;
-import com.icanci01.guacamole.verticles.VerticleAB;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Promise;
-import io.vertx.core.eventbus.DeliveryOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,12 +41,12 @@ public class RequestResponseExample extends AbstractVerticle {
             eventBus.request(ADDRESS, message, reply -> {
                 LOG.debug("<<< Response: \"{}\"", reply.result().body().toString());
             });
+
         }
 
         @Override
         public void stop(final Promise<Void> stopPromise) throws Exception {
             LOG.debug("Stop {}", getClass().getSimpleName());
-
             stopPromise.complete();
         }
 
@@ -64,9 +61,9 @@ public class RequestResponseExample extends AbstractVerticle {
             LOG.debug("\tStart {}", getClass().getSimpleName());
             startPromise.complete();
             vertx.eventBus().consumer(RequestVerticle.ADDRESS, message -> {
-                LOG.debug("\t<<< Received Message: \"{}\"", message.body().toString());
+                LOG.debug("\t>> [Received Message -- \"{}\"]", message.body().toString());
                 final String responseMessage = "Received your message. Thanks!";
-                LOG.debug("\t>>> Sending Response:  \"{}\"", responseMessage);
+                LOG.debug("\t<< [Sending Response -- \"{}\"]", responseMessage);
                 message.reply(responseMessage);
             });
         }

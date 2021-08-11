@@ -1,18 +1,12 @@
 package com.icanci01.guacamole.starter;
 
+import com.icanci01.guacamole.eventbus.PointToPointExample;
 import com.icanci01.guacamole.eventbus.RequestResponseExample;
-import com.icanci01.guacamole.eventloops.EventLoopExample;
-import com.icanci01.guacamole.verticles.VerticleA;
-import com.icanci01.guacamole.verticles.VerticleB;
 import com.icanci01.guacamole.verticles.VerticleN;
-import com.icanci01.guacamole.verticles.http.HttpVerticle;
-import com.icanci01.guacamole.worker.WorkerExample;
-import com.icanci01.guacamole.worker.WorkerVerticle;
 import io.vertx.core.*;
 import io.vertx.core.json.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -54,7 +48,10 @@ public class Launcher extends AbstractVerticle {
 
         //  scalingVerticlesConfig();
 
-        requestResponseExample();
+        // requestResponseExample();
+
+        pointToPointExample();
+
     }
 
     private void scalingVerticlesConfig() {
@@ -73,6 +70,15 @@ public class Launcher extends AbstractVerticle {
                 .setWorker(true)
                 .setWorkerPoolSize(2)
                 .setWorkerPoolName("response-request-example")
+            );
+    }
+
+    private void pointToPointExample() {
+        vertx.deployVerticle(new PointToPointExample(),
+            new DeploymentOptions()
+                .setWorker(true)
+                .setWorkerPoolSize(2)
+                .setWorkerPoolName("point-to-point-example")
         );
     }
 
