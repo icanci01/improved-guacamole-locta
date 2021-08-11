@@ -13,9 +13,11 @@ public class EventLoopExample extends AbstractVerticle {
 
   @Override
   public void start(final Promise<Void> startPromise) throws Exception {
-    LOG.debug("Starting " + getClass().getName());
-
-
+    LOG.debug("Starting {}", getClass().getName());
     startPromise.complete();
+
+    // Do not do this inside a verticle
+    // Thread.sleep(5000);
+
   }
 }

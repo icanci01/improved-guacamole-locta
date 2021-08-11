@@ -12,7 +12,7 @@ public class HttpVerticle extends AbstractVerticle {
 
   @Override
   public void start(final Promise<Void> startPromise) throws Exception {
-    LOG.info("Starting http verticle {}",  HttpVerticle.class.getName());
+    LOG.debug("Starting http verticle {}",  HttpVerticle.class.getName());
     vertx.createHttpServer().requestHandler(req -> req.response()
       .putHeader("content-type", "text/plain")
       .end("HERE!")).listen(16080, http -> {

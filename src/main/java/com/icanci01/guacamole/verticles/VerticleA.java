@@ -12,7 +12,7 @@ public class VerticleA extends AbstractVerticle {
 
   @Override
   public void start(final Promise<Void> startPromise) throws Exception {
-    LOG.debug("Starting " + getClass().getName());
+    LOG.debug("Starting {}", getClass().getName());
     vertx.deployVerticle(new VerticleAA(), whenDeployed -> {
       LOG.debug("Deployed " + VerticleAA.class.getName());
       //TODO: Here add your code
@@ -20,7 +20,7 @@ public class VerticleA extends AbstractVerticle {
       vertx.undeploy(whenDeployed.result());
     });
     vertx.deployVerticle(new VerticleAB(), whenDeployed -> {
-      LOG.debug("Deployed " + VerticleAB.class.getName());
+      LOG.debug("Deployed {}", VerticleAB.class.getName());
       //TODO: Here add your code
 
       vertx.undeploy(whenDeployed.result());

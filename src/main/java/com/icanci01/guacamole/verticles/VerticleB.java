@@ -12,7 +12,7 @@ public class VerticleB extends AbstractVerticle {
 
   @Override
   public void start(final Promise<Void> startPromise) throws Exception {
-    LOG.debug("Starting " + getClass().getName());
+    LOG.debug("Starting {}", getClass().getName());
     //TODO: Here add your code
 
     startPromise.complete();
