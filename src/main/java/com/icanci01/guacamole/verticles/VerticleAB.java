@@ -8,10 +8,10 @@ import org.slf4j.LoggerFactory;
 
 public class VerticleAB extends AbstractVerticle {
 
-  private static final Logger LOG = LoggerFactory.getLogger(Launcher.class);
+  private static final Logger LOG = LoggerFactory.getLogger(VerticleAB.class);
 
   @Override
-  public void start(Promise<Void> startPromise) throws Exception {
+  public void start(final Promise<Void> startPromise) throws Exception {
     LOG.debug("Starting " + getClass().getName());
     //TODO: Here add your code
 
