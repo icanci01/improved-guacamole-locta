@@ -7,14 +7,20 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Promise;
 import io.vertx.core.json.JsonObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import java.util.UUID;
 
 public class Launcher extends AbstractVerticle {
 
+
+  private static final Logger LOG = LoggerFactory.getLogger(Launcher.class);
+
   @Override
   public void start(final Promise<Void> startPromise) {
-    System.out.println("Launch " + getClass().getName());
+    LOG.debug("Launch " + getClass().getName());
     vertx.deployVerticle(new VerticleA());
     vertx.deployVerticle(new VerticleB());
     vertx.deployVerticle(VerticleN.class.getName(),
@@ -30,7 +36,7 @@ public class Launcher extends AbstractVerticle {
       .end("HERE!")).listen(16080, http -> {
       if (http.succeeded()) {
         startPromise.complete();
-        System.out.println("Started");
+        LOG.debug("Started");
       } else {
         startPromise.fail(http.cause());
       }
