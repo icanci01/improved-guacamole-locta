@@ -7,11 +7,10 @@ import io.vertx.core.eventbus.DeliveryOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sound.midi.Receiver;
 import java.util.UUID;
 
 /**
- * Mostly based on sending the message, not waiting for a response.
- * UDP protocol - no need for established connection
  * The sender sends the message periodically
  */
 public class PointToPointExample extends AbstractVerticle {
@@ -27,12 +26,15 @@ public class PointToPointExample extends AbstractVerticle {
                 try {
                     Thread.sleep(1500);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    LOG.error("ERROR -", e.getCause());
                 }
                 vertx.undeploy(whenDeployed.result());
             });
-        vertx.deployVerticle(new Receiver(), new DeploymentOptions());
-
+        vertx.deployVerticle(new Receiver(),
+            new DeploymentOptions()
+            , whenDeployed -> {
+                vertx.undeploy(whenDeployed.result());
+        });
         startPromise.complete();
     }
 
@@ -43,7 +45,6 @@ public class PointToPointExample extends AbstractVerticle {
         @Override
         public void start(final Promise<Void> startPromise) throws Exception {
             LOG.debug("Start {}", getClass().getSimpleName());
-            startPromise.complete();
             vertx.setPeriodic(500, id -> {
                 // Send a message every second
                 UUID randomUUID = UUID.randomUUID();
@@ -53,7 +54,7 @@ public class PointToPointExample extends AbstractVerticle {
                     , new DeliveryOptions()
                         .setSendTimeout(250));
             });
-
+            startPromise.complete();
         }
 
         @Override
@@ -81,5 +82,6 @@ public class PointToPointExample extends AbstractVerticle {
             LOG.debug("Stop {}", getClass().getSimpleName());
             stopPromise.complete();
         }
+
     }
 }
