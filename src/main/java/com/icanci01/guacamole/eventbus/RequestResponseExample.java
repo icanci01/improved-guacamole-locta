@@ -15,9 +15,9 @@ public class RequestResponseExample extends AbstractVerticle {
         LOG.debug("Starting {}", getClass().getName());
         vertx.deployVerticle(new RequestVerticle(),
             new DeploymentOptions()
-        , whenDeployed -> {
-            vertx.undeploy(whenDeployed.result());
-        });
+            , whenDeployed -> {
+                vertx.undeploy(whenDeployed.result());
+            });
         vertx.deployVerticle(new ResponseVerticle(),
             new DeploymentOptions()
             , whenDeployed -> {

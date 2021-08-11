@@ -1,6 +1,5 @@
 package com.icanci01.guacamole.worker;
 
-import com.icanci01.guacamole.starter.Launcher;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import org.slf4j.Logger;

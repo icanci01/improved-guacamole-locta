@@ -1,6 +1,7 @@
 package com.icanci01.guacamole.starter;
 
 import com.icanci01.guacamole.eventbus.PointToPointExample;
+import com.icanci01.guacamole.eventbus.PublishSubscribeExample;
 import com.icanci01.guacamole.eventbus.RequestResponseExample;
 import com.icanci01.guacamole.verticles.VerticleN;
 import io.vertx.core.*;
@@ -27,7 +28,7 @@ public class Launcher extends AbstractVerticle {
                 .setMaxEventLoopExecuteTimeUnit(TimeUnit.MILLISECONDS)
                 .setBlockedThreadCheckInterval(1)
                 .setBlockedThreadCheckIntervalUnit(TimeUnit.SECONDS)
-                .setEventLoopPoolSize(4)
+                .setEventLoopPoolSize(25)
         );
         vertx.deployVerticle(new Launcher());
     }
@@ -50,7 +51,9 @@ public class Launcher extends AbstractVerticle {
 
         // requestResponseExample();
 
-        pointToPointExample();
+        //pointToPointExample();
+
+        publishSubscribeExample();
 
     }
 
@@ -79,6 +82,15 @@ public class Launcher extends AbstractVerticle {
                 .setWorker(true)
                 .setWorkerPoolSize(2)
                 .setWorkerPoolName("point-to-point-example")
+        );
+    }
+
+    private void publishSubscribeExample() {
+        vertx.deployVerticle(new PublishSubscribeExample(),
+            new DeploymentOptions()
+                .setWorker(true)
+                .setWorkerPoolSize(2)
+                .setWorkerPoolName("publish-subscriber-example")
         );
     }
 

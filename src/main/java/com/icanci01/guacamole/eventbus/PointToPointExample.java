@@ -7,7 +7,6 @@ import io.vertx.core.eventbus.DeliveryOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.sound.midi.Receiver;
 import java.util.UUID;
 
 /**
