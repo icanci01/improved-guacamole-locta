@@ -31,13 +31,13 @@ public class JsonObjectExample {
 
     @Test
     void jsonObjectCanBeCreatedFromMap() {
-        final Map<String, Object> myMap = new HashMap<>();
-        myMap.put("id", 2);
-        myMap.put("name", "zorro");
-        myMap.put("project", true);
+        final Map<String, Object> zorro = new HashMap<>();
+        zorro.put("id", 2);
+        zorro.put("name", "zorro");
+        zorro.put("project", true);
 
-        final JsonObject asJsonObject = new JsonObject(myMap);
-        Assertions.assertEquals(myMap, asJsonObject.getMap());
+        final JsonObject asJsonObject = new JsonObject(zorro);
+        Assertions.assertEquals(zorro, asJsonObject.getMap());
         Assertions.assertEquals(2, asJsonObject.getInteger("id"));
         Assertions.assertEquals("zorro", asJsonObject.getString("name"));
         Assertions.assertEquals(true, asJsonObject.getBoolean("project"));

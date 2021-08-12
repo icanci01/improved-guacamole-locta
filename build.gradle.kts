@@ -23,6 +23,7 @@ repositories {
 
 val vertxVersion = "4.2.0-SNAPSHOT"
 val junitJupiterVersion = "5.7.0"
+val jacksonVersion = "2.11.4"
 
 val mainVerticleName = "com.icanci01.guacamole.starter.Launcher"
 val launcherClassName = "io.vertx.core.Launcher"
@@ -49,6 +50,7 @@ dependencies {
   implementation("org.slf4j:slf4j-api:1.7.30")
   testImplementation("io.vertx:vertx-junit5")
   testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
+  testImplementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
 }
 
 java {
