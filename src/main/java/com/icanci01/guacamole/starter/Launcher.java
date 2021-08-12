@@ -51,9 +51,9 @@ public class Launcher extends AbstractVerticle {
 
         // requestResponseExample();
 
-        pointToPointExample();
+        // pointToPointExample();
 
-        publishSubscribeExample();
+        // publishSubscribeExample();
 
     }
 
