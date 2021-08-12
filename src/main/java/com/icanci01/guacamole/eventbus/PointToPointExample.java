@@ -33,7 +33,7 @@ public class PointToPointExample extends AbstractVerticle {
             new DeploymentOptions()
             , whenDeployed -> {
                 vertx.undeploy(whenDeployed.result());
-        });
+            });
         startPromise.complete();
     }
 

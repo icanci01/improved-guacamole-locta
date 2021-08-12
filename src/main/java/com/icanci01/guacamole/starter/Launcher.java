@@ -51,7 +51,7 @@ public class Launcher extends AbstractVerticle {
 
         // requestResponseExample();
 
-        //pointToPointExample();
+        // pointToPointExample();
 
         publishSubscribeExample();
 
@@ -89,8 +89,8 @@ public class Launcher extends AbstractVerticle {
         vertx.deployVerticle(new PublishSubscribeExample(),
             new DeploymentOptions()
                 .setWorker(true)
-                .setWorkerPoolSize(2)
-                .setWorkerPoolName("publish-subscriber-example")
+                .setWorkerPoolSize(3)
+                .setWorkerPoolName("publish-subscribe-example")
         );
     }
 
