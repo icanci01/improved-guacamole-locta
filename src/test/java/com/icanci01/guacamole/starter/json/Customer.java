@@ -10,6 +10,10 @@ public class Customer {
     private boolean lovesReact;
     private Integer salary;
 
+    public Customer(){
+        // Default constructor for Jackson
+    }
+
     public Customer(Integer id, String name, boolean lovesVertx, boolean lovesJava, boolean lovesC, boolean lovesReact, Integer salary) {
         this.id = id;
         this.name = name;

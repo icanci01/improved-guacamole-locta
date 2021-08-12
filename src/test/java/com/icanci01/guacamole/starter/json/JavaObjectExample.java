@@ -19,5 +19,14 @@ public class JavaObjectExample {
         Assertions.assertEquals(volpo_customer.isLovesReact(), volpo.getBoolean("lovesReact"));
         Assertions.assertEquals(volpo_customer.getSalary(), volpo.getInteger("salary"));
 
+        final Customer volpo_customer2 = volpo.mapTo(Customer.class);
+        Assertions.assertEquals(volpo_customer.getId(), volpo_customer2.getId());
+        Assertions.assertEquals(volpo_customer.getName(), volpo_customer2.getName());
+        Assertions.assertEquals(volpo_customer.isLovesVertx(), volpo_customer2.isLovesVertx());
+        Assertions.assertEquals(volpo_customer.isLovesJava(), volpo_customer2.isLovesJava());
+        Assertions.assertEquals(volpo_customer.isLovesC(), volpo_customer2.isLovesC());
+        Assertions.assertEquals(volpo_customer.isLovesReact(), volpo_customer2.isLovesReact());
+        Assertions.assertEquals(volpo_customer.getSalary(), volpo_customer2.getSalary());
+
     }
 }
