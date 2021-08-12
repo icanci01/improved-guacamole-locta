@@ -10,7 +10,7 @@ import java.util.Map;
 public class JsonObjectExample {
 
     @Test
-    void JsonObjectCanBeMapped() {
+    void jsonObjectCanBeMapped() {
         final JsonObject myJsonObject = new JsonObject();
         myJsonObject.put("id", 1);
         myJsonObject.put("name", "Cristian");
