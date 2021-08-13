@@ -10,7 +10,7 @@ public class Customer {
     private boolean lovesReact;
     private Integer salary;
 
-    public Customer(){
+    public Customer() {
         // Default constructor for Jackson
     }
 
@@ -28,52 +28,52 @@ public class Customer {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public boolean isLovesVertx() {
-        return lovesVertx;
-    }
-
-    public boolean isLovesJava() {
-        return lovesJava;
-    }
-
-    public boolean isLovesC() {
-        return lovesC;
-    }
-
-    public boolean isLovesReact() {
-        return lovesReact;
-    }
-
-    public Integer getSalary() {
-        return salary;
-    }
-
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public boolean isLovesVertx() {
+        return lovesVertx;
+    }
+
     public void setLovesVertx(boolean lovesVertx) {
         this.lovesVertx = lovesVertx;
+    }
+
+    public boolean isLovesJava() {
+        return lovesJava;
     }
 
     public void setLovesJava(boolean lovesJava) {
         this.lovesJava = lovesJava;
     }
 
+    public boolean isLovesC() {
+        return lovesC;
+    }
+
     public void setLovesC(boolean lovesC) {
         this.lovesC = lovesC;
     }
 
+    public boolean isLovesReact() {
+        return lovesReact;
+    }
+
     public void setLovesReact(boolean lovesReact) {
         this.lovesReact = lovesReact;
+    }
+
+    public Integer getSalary() {
+        return salary;
     }
 
     public void setSalary(Integer salary) {
