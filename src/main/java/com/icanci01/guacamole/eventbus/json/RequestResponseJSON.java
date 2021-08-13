@@ -43,7 +43,7 @@ public class RequestResponseJSON extends AbstractVerticle {
 
         @Override
         public void stop(final Promise<Void> stopPromise) throws Exception {
-            LOG.debug("\tStop {}", getClass().getSimpleName());
+            LOG.debug("Stop {}", getClass().getSimpleName());
             stopPromise.complete();
         }
 
