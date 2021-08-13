@@ -1,4 +1,4 @@
-package com.icanci01.guacamole.starter;
+package com.icanci01.guacamole.starter.futurepromise;
 
 import io.vertx.core.CompositeFuture;
 import io.vertx.core.Future;
