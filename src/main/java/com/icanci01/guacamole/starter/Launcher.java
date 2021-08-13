@@ -3,7 +3,9 @@ package com.icanci01.guacamole.starter;
 import com.icanci01.guacamole.eventbus.PointToPointExample;
 import com.icanci01.guacamole.eventbus.PublishSubscribeExample;
 import com.icanci01.guacamole.eventbus.RequestResponseExample;
+import com.icanci01.guacamole.eventbus.json.RequestResponseJSON;
 import com.icanci01.guacamole.verticles.VerticleN;
+import com.icanci01.guacamole.verticles.http.HttpVerticle;
 import io.vertx.core.*;
 import io.vertx.core.json.JsonObject;
 import org.slf4j.Logger;
@@ -55,6 +57,8 @@ public class Launcher extends AbstractVerticle {
 
         // publishSubscribeExample();
 
+        requestResponseJson();
+
     }
 
     private void scalingVerticlesConfig() {
@@ -91,6 +95,15 @@ public class Launcher extends AbstractVerticle {
                 .setWorker(true)
                 .setWorkerPoolSize(3)
                 .setWorkerPoolName("publish-subscribe-example")
+        );
+    }
+
+    private void requestResponseJson() {
+        vertx.deployVerticle(new RequestResponseJSON(),
+            new DeploymentOptions()
+                .setWorker(true)
+                .setWorkerPoolSize(2)
+                .setWorkerPoolName("response-request-example")
         );
     }
 

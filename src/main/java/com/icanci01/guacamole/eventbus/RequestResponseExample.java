@@ -38,7 +38,7 @@ public class RequestResponseExample extends AbstractVerticle {
             var eventBus = vertx.eventBus();
             final String message = "Hello World! Example of Request with Event Bus";
             LOG.debug(">>> Sending:  \"{}\"", message);
-            eventBus.request(ADDRESS, message, reply -> {
+            eventBus.<String>request(ADDRESS, message, reply -> {
                 LOG.debug("<<< Response: \"{}\"", reply.result().body().toString());
             });
 
@@ -60,7 +60,7 @@ public class RequestResponseExample extends AbstractVerticle {
         public void start(final Promise<Void> startPromise) throws Exception {
             LOG.debug("\tStart {}", getClass().getSimpleName());
             startPromise.complete();
-            vertx.eventBus().consumer(RequestVerticle.ADDRESS, message -> {
+            vertx.eventBus().<String>consumer(RequestVerticle.ADDRESS, message -> {
                 LOG.debug("\t>> [Received Message -- \"{}\"]", message.body().toString());
                 final String responseMessage = "Received your message. Thanks!";
                 LOG.debug("\t<< [Sending Response -- \"{}\"]", responseMessage);
