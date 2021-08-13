@@ -23,7 +23,7 @@ public class Launcher extends AbstractVerticle {
      *
      * @param args - Program input
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         var vertx = Vertx.vertx(
             new VertxOptions()
                 .setMaxEventLoopExecuteTime(500)
@@ -59,7 +59,9 @@ public class Launcher extends AbstractVerticle {
 
         // requestResponseJson();
 
-        customCodecPingPongExample();
+        // customCodecPingPongExample();
+
+        startPromise.complete();
 
     }
 
