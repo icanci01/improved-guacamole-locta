@@ -53,4 +53,5 @@ public class MapFutureExample {
 
         LOG.debug("End test");
     }
+
 }
