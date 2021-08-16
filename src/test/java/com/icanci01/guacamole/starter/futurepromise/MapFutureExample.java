@@ -7,6 +7,7 @@ import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.junit5.VertxExtension;
 import io.vertx.junit5.VertxTestContext;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
@@ -39,14 +40,17 @@ public class MapFutureExample {
         future
             .map(asString -> {
                 LOG.debug("Map String to JsonObject");
+                Assertions.assertEquals("Success",asString);
                 return new JsonObject().put("key", asString);
             })
             .map(jsonObject -> {
                 LOG.debug("Map JsonObject to JsonArray");
+                Assertions.assertEquals("{\"key\":\"Success\"}",jsonObject.toString());
                 return new JsonArray().add(jsonObject);
             })
             .onSuccess(jsonArray -> {
-                LOG.debug("End Future Result: {}", jsonArray.toString());
+                LOG.debug("End future result {} of type {}", jsonArray.toString(), jsonArray.getClass().getSimpleName());
+                Assertions.assertEquals("[{\"key\":\"Success\"}]",jsonArray.toString());
                 context.completeNow();
             })
             .onFailure(context::failNow);
