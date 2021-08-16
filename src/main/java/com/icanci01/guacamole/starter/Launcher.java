@@ -32,12 +32,15 @@ public class Launcher extends AbstractVerticle {
                 .setBlockedThreadCheckIntervalUnit(TimeUnit.SECONDS)
                 .setEventLoopPoolSize(25)
         );
-        vertx.deployVerticle(new Launcher());
+        vertx.deployVerticle(new Launcher(), whenDeployed -> {
+            LOG.debug("Launcher end with {}", whenDeployed.result().toString());
+            vertx.undeploy(whenDeployed.result());
+        });
     }
 
     @Override
     public void start(final Promise<Void> startPromise) {
-        LOG.debug("Launch {}", getClass().getName());
+        LOG.debug("Starting launcher {}", getClass().getName());
 
         // vertx.deployVerticle(new HttpVerticle());
 

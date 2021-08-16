@@ -45,8 +45,8 @@ public class MapFutureExample {
                 LOG.debug("Map JsonObject to JsonArray");
                 return new JsonArray().add(jsonObject);
             })
-            .onSuccess(result -> {
-                LOG.debug("End Future Result: {}", result.toString());
+            .onSuccess(jsonArray -> {
+                LOG.debug("End Future Result: {}", jsonArray.toString());
                 context.completeNow();
             })
             .onFailure(context::failNow);
